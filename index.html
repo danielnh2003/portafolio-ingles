@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Semester in Frames — English Learning Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FAF7F2', cream: '#F3EDE4', beige: '#E8DFD3', softwhite: '#FCFBF9',
+            taupe: '#8C7D70', terracotta: '#B86B52', terracottaDark: '#9A543E',
+            espresso: '#2C2520', sandline: '#DDD3C5',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --bg-ivory: #FAF7F2; --bg-cream: #F3EDE4; --bg-softwhite: #FCFBF9;
+      --text-espresso: #2C2520; --text-taupe: #8C7D70; --accent-terracotta: #B86B52; --border-sand: #DDD3C5;
+    }
+    html { scroll-behavior: smooth; background-color: var(--bg-ivory); color: var(--text-espresso); font-family: 'Plus Jakarta Sans', sans-serif; }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.28;
+      background-image: radial-gradient(rgba(140, 125, 112, 0.16) 1px, transparent 0); background-size: 22px 22px;
+    }
+    .gallery-frame-img { transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease; }
+    .gallery-card:hover .gallery-frame-img { transform: scale(1.035); }
+    @keyframes pageReveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .view-animate { animation: pageReveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  </style>
+</head>
+<body class="bg-ivory text-espresso selection:bg-terracotta selection:text-white min-h-screen flex flex-col">
+
+  <header class="sticky top-0 z-40 bg-ivory/95 backdrop-blur-md border-b border-sandline">
+    <div class="max-w-6xl mx-auto px-5 sm:px-10">
+      <div class="h-16 flex items-center justify-between gap-4">
+        <button onclick="navigateTo('home')" class="text-left flex items-center gap-2.5 group focus:outline-none py-1.5">
+          <span class="w-2 h-2 rounded-full bg-terracotta inline-block"></span>
+          <span class="font-serif italic text-xl sm:text-2xl text-espresso tracking-tight group-hover:text-terracotta transition-colors">
+            A Semester in Frames
+          </span>
+        </button>
+        <span class="text-[11px] tracking-[0.12em] uppercase text-taupe">Daniel Nicolalde &bull; English Level 6</span>
+      </div>
+
+      <nav class="flex items-center gap-1 sm:gap-2 overflow-x-auto pb-3 pt-1 text-[11px] uppercase tracking-[0.16em]">
+        <button type="button" onclick="navigateTo('home')" class="nav-pill px-3 py-1.5 rounded-full transition-all bg-cream text-espresso font-medium">Gallery Home</button>
+        <button type="button" onclick="navigateTo('page-1')" class="nav-pill px-3 py-1.5 rounded-full transition-all hover:bg-cream">01. Where I Started</button>
+        <button type="button" onclick="navigateTo('page-2')" class="nav-pill px-3 py-1.5 rounded-full transition-all hover:bg-cream">02. My Best Work</button>
+        <button type="button" onclick="navigateTo('page-3')" class="nav-pill px-3 py-1.5 rounded-full transition-all hover:bg-cream">03. Biggest Challenge</button>
+        <button type="button" onclick="navigateTo('page-4')" class="nav-pill px-3 py-1.5 rounded-full transition-all hover:bg-cream">04. How I Improved</button>
+        <button type="button" onclick="navigateTo('page-5')" class="nav-pill px-3 py-1.5 rounded-full transition-all hover:bg-cream">05. Learning With Others</button>
+        <button type="button" onclick="navigateTo('page-6')" class="nav-pill px-3 py-1.5 rounded-full transition-all hover:bg-cream">06. My Next Chapter</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="appRoot" class="flex-grow max-w-6xl mx-auto px-5 sm:px-10 py-12 w-full">
+    <!-- El contenido interactivo renderizado por JS -->
+  </main>
+
+  <footer class="border-t border-sandline mt-20 py-12 px-6 sm:px-10 bg-cream/60">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <p class="font-serif italic text-xl text-espresso mb-1">A Semester in Frames</p>
+        <p class="text-xs text-taupe tracking-wide">Daniel Nicolalde &bull; University English Course &bull; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const PORTFOLIO_DATA = {
+      welcomeTitle: "A Semester in Frames",
+      welcomeSubtitle: "An editorial reflection on my English Level 6 learning journey, challenges, and growth.",
+      pages: [
+        {
+          id: "page-1",
+          number: "01",
+          title: "WHERE I STARTED",
+          subtitle: "Baseline, Early Goals & Initial Reflections",
+          content: "During the first week of class, I felt comfortable with grammar, especially using different verb tenses. However, vocabulary was my biggest weakness. Sometimes I knew what I wanted to say, but I struggled to find the right words to express my ideas clearly. My main goal was to become more fluent, expand my academic vocabulary, and participate more actively in discussions."
+        },
+        {
+          id: "page-2",
+          number: "02",
+          title: "MY BEST WORK",
+          subtitle: "Scientific Communication & WLED Emission Spectrum",
+          content: "I chose my oral presentation explaining the WLED emission spectrum as my best work. It challenged me to communicate scientific data in English accurately, using precise vocabulary to describe charts and graphs effectively for an audience."
+        },
+        {
+          id: "page-3",
+          number: "03",
+          title: "BIGGEST CHALLENGE",
+          subtitle: "Adapting Spoken Language to Academic Writing",
+          content: "My biggest challenge was the midterm graph-writing task. I initially assumed spoken graph descriptions worked the same in writing. After receiving my professor's feedback and lower score, I learned to adjust my sentence structure, verb tenses, and academic tone."
+        },
+        {
+          id: "page-4",
+          number: "04",
+          title: "HOW I IMPROVED",
+          subtitle: "Evidence of Progress & Vocabulary Growth",
+          content: "Through consistent practice, careful revision, and applying feedback, my academic writing improved noticeably in later assignments, reflecting better control over formal reporting verbs and structured paragraphs."
+        },
+        {
+          id: "page-5",
+          number: "05",
+          title: "LEARNING WITH OTHERS",
+          subtitle: "Collaboration & Peer Feedback",
+          content: "Working on group assignments, such as our research on water supplementation and cognitive performance, taught me how to coordinate ideas, share constructive feedback, and build stronger academic arguments together."
+        },
+        {
+          id: "page-6",
+          number: "06",
+          title: "MY NEXT CHAPTER",
+          subtitle: "Future Goals & Continuous Learning",
+          content: "As I finish Level 6, my journey in English doesn't stop here. I plan to continue reading scientific literature in English, listening to academic lectures, and applying these communication skills in my future research and professional career."
+        }
+      ]
+    };
+
+    function navigateTo(pageId) {
+      const root = document.getElementById('appRoot');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (pageId === 'home') {
+        root.innerHTML = `
+          <div class="view-animate space-y-12">
+            <div class="max-w-3xl py-8">
+              <span class="text-[10px] uppercase tracking-[0.25em] text-terracotta font-semibold block mb-3">English Portfolio &bull; 2026</span>
+              <h1 class="font-serif text-4xl sm:text-6xl text-espresso font-normal tracking-tight mb-6">${PORTFOLIO_DATA.welcomeTitle}</h1>
+              <p class="text-base sm:text-lg text-taupe leading-relaxed">${PORTFOLIO_DATA.welcomeSubtitle}</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              ${PORTFOLIO_DATA.pages.map(p => `
+                <div onclick="navigateTo('${p.id}')" class="gallery-card group cursor-pointer bg-cream/40 border border-sandline rounded-xl p-6 transition-all hover:bg-cream hover:shadow-paper">
+                  <span class="text-xs font-semibold text-terracotta tracking-widest block mb-2">${p.number}</span>
+                  <h3 class="font-serif text-2xl text-espresso mb-2 group-hover:text-terracotta transition-colors">${p.title}</h3>
+                  <p class="text-xs text-taupe line-clamp-2 leading-relaxed">${p.subtitle}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } else {
+        const page = PORTFOLIO_DATA.pages.find(p => p.id === pageId);
+        if (!page) return navigateTo('home');
+
+        root.innerHTML = `
+          <div class="view-animate max-w-4xl mx-auto space-y-8">
+            <button onclick="navigateTo('home')" class="text-xs uppercase tracking-[0.16em] text-taupe hover:text-terracotta transition-colors flex items-center gap-2">
+              &larr; Back to Gallery Home
+            </button>
+            <div class="border-b border-sandline pb-6">
+              <span class="text-xs font-semibold text-terracotta tracking-widest block mb-2">${page.number}</span>
+              <h1 class="font-serif text-4xl sm:text-5xl text-espresso font-normal mb-3">${page.title}</h1>
+              <p class="text-sm text-taupe">${page.subtitle}</p>
+            </div>
+            <div class="bg-softwhite border border-sandline rounded-xl p-8 sm:p-12 shadow-paper space-y-6">
+              <p class="text-base sm:text-lg text-espresso/90 leading-relaxed font-sans">${page.content}</p>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Inicializar en Home
+    navigateTo('home');
+  </script>
+</body>
+</html>
